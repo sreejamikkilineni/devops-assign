@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tictactoe-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: tictactoe
+  template:
+    metadata:
+      labels:
+        app: tictactoe
+    spec:
+      containers:
+        - name: tictactoe
+          image: sreeja20082004/sample:v1
+          ports:
+            - containerPort: 5000
