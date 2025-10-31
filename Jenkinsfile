@@ -24,8 +24,12 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-               bat 'kubectl apply -f deployment.yaml --validate=false'
-               bat 'kubectl apply -f service.yaml'
+                bat '''
+                set KUBECONFIG = C:\\Users\\vr_ma\\.kube\\config
+                kubectl cluster-info 
+                kubectl apply -f deployment.yaml
+                kubectl apply -f service.yaml
+                '''
             }
         }
     }
